@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'groovy'
+    id 'idea'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '1.2.3'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+mainClassName = 'com.michaelszymczak.examples.postgresnotify.Demo'
+version '0.1'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'ch.qos.logback:logback-classic:1.1.7'
+    compile 'org.postgresql:postgresql:9.4.1212'
+
+    testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
+    testCompile 'junit:junit:4.12'
+    testCompile "cglib:cglib-nodep:3.2.4"
+    testCompile 'org.objenesis:objenesis:2.4'
+}
+
+shadowJar {
+    baseName = 'postgresnotify'
+    classifier = null
+    version = null
+}
